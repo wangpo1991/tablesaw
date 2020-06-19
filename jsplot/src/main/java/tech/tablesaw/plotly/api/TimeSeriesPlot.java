@@ -24,8 +24,9 @@ public class TimeSeriesPlot {
     for (int i = 0; i < tables.size(); i++) {
       List<Table> tableList = tables.asTableList();
       Table t = tableList.get(i).sortOn(dateColX);
+      //change dateColumn to stringColumn  can suit the type of date ,then you will missing the can not cast dateTimeColumn to dateColumn exception when you choose the pattern date not suit the orgin source code 
       traces[i] =
-          ScatterTrace.builder(t.dateColumn(dateColX), t.numberColumn(yCol))
+          ScatterTrace.builder(t.stringColumn(dateColX), t.numberColumn(yCol))
               .showLegend(true)
               .name(tableList.get(i).name())
               .mode(ScatterTrace.Mode.LINE)
